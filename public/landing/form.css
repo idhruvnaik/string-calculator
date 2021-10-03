@@ -1,0 +1,27 @@
+.form-control {
+  background-color: #ffffff;
+  border: 1px solid #e3e3e3;
+  border-radius: 5px;
+  height: 20px;
+  box-shadow: none;
+  height: 30px;
+  padding: 0px 10px;
+}
+
+.btn {
+  color: #ffffff;
+  background-color: #ffa534;
+  border-width: 1px;
+  font-weight: 400;
+  opacity: 0.8;
+  padding: 3px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  text-emphasis: none;
+  cursor: pointer;
+  color: #ffa534;
+}

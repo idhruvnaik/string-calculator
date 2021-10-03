@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>String calculator</title>
+  <link rel="stylesheet" type="text/css" href="/landing/application.css" />
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+</head>
+<body>
+
+  <div class="container">
+    <div class="card">
+        <form class="mb-10">
+          <div class="form-group mb-10">
+            <label for="exampleInputEmail1"> Input string : </label>
+            <input type="text" id="sample" class="form-control" placeholder="Enter String">
+          </div>
+          <button type="button" id="submit" class="btn btn-primary">Submit</button>
+
+          <a href="#" class="ml-10" id="clear">clear</button>
+        </form>
+        <div class="result-container">
+            <input type="text" id="result" class="form-control disabled" placeholder="Result">
+        </div>
+    </div>
+  </div>
+
+  <div id="toast-msg" class="toast-msg"></div>
+</body>
+</html>
+
+<script type="text/javascript">
+  $("#submit").click(function () {
+    $.ajax({
+        url: '/landing/add',
+        type: 'POST',
+        data: {
+          "text": $("#sample").val()
+        },
+        success: function (data) {
+          $("#result").val(data.contents);
+        },
+        error: function (data) {
+          $("#toast-msg").addClass("error show");
+          $("#toast-msg").text(JSON.parse(data.responseText).message);
+          setTimeout(function(){ $("#toast-msg").removeClass("error show"); }, 2500);
+
+          $("#result").val('');
+        }
+    });
+  });
+
+  $("#clear").click(function () {
+    $("#sample").val('');
+    $("#result").val('');
+  });
+</script>
